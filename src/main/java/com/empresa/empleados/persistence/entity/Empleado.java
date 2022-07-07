@@ -1,5 +1,7 @@
 package com.empresa.empleados.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,8 +18,10 @@ public class Empleado {
 
     private String apellido;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaNacimiento;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaVinculacion;
 
     private String cargo;
