@@ -2,9 +2,11 @@ package com.empresa.empleados.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Employee {
+
 
     private String employeeId;
 
@@ -13,10 +15,10 @@ public class Employee {
     private String lastName;
 
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date bindindDate;
+    private LocalDate bindindDate;
 
     private String position;
 
@@ -46,19 +48,19 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public Date getBindindDate() {
+    public LocalDate getBindindDate() {
         return bindindDate;
     }
 
-    public void setBindindDate(Date bindindDate) {
+    public void setBindindDate(LocalDate bindindDate) {
         this.bindindDate = bindindDate;
     }
 

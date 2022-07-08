@@ -39,7 +39,12 @@ public class EmployeeController {
 
     @PostMapping("/save")
     public ResponseEntity<Employee> save(@RequestBody Employee employee){
-        return new ResponseEntity<>(employeeService.save(employee), HttpStatus.CREATED);
+
+        if (employeeService.ageValidation(employee.getBirthDate())>=18) {
+            return new ResponseEntity<>(employeeService.save(employee), HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<>( HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     @DeleteMapping("/delete/{employeeId}")
@@ -51,4 +56,16 @@ public class EmployeeController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
+
+
+    @GetMapping("/birthDay/{employeeId}")
+    public ResponseEntity<String> getTimeBirthDay(@PathVariable("employeeId") String employeeId){
+        return new ResponseEntity<>(employeeService.getTime(employeeId, 0), HttpStatus.OK);
+    }
+
+    @GetMapping("/bindindDate/{employeeId}")
+    public ResponseEntity<String> getTimeCompany(@PathVariable("employeeId") String employeeId){
+        return new ResponseEntity<>(employeeService.getTime(employeeId, 1), HttpStatus.OK);
+    }
+
 }

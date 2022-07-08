@@ -1,10 +1,13 @@
 package com.empresa.empleados.persistence.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.istack.NotNull;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Entity
@@ -12,20 +15,27 @@ import java.util.Date;
 public class Empleado {
 
     @Id
+    @NotEmpty (message = "El campo no puede ser vacio")
     private String idEmpleado;
 
+    @NotEmpty (message = "El campo no puede ser vacio")
     private String nombre;
 
+    @NotEmpty (message = "El campo no puede ser vacio")
     private String apellido;
 
+    @NotEmpty (message = "El campo no puede ser vacio")
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
+    @NotEmpty (message = "El campo no puede ser vacio")
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date fechaVinculacion;
+    private LocalDate fechaVinculacion;
 
+    @NotEmpty (message = "El campo no puede ser vacio")
     private String cargo;
 
+    @NotEmpty (message = "El campo no puede ser vacio")
     private Double salario;
 
 
@@ -53,19 +63,19 @@ public class Empleado {
         this.apellido = apellido;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Date getFechaVinculacion() {
+    public LocalDate getFechaVinculacion() {
         return fechaVinculacion;
     }
 
-    public void setFechaVinculacion(Date fechaVinculacion) {
+    public void setFechaVinculacion(LocalDate fechaVinculacion) {
         this.fechaVinculacion = fechaVinculacion;
     }
 
